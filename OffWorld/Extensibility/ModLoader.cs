@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.Json;
 using CommunityToolkit.Diagnostics;
 
-namespace OffWorld;
+namespace OffWorld.Extensibility;
 
 public static class ModLoader
 {

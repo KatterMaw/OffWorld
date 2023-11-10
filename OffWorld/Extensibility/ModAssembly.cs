@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Loader;
 using OffWorld.Definitions;
 
-namespace OffWorld;
+namespace OffWorld.Extensibility;
 
 public sealed class ModAssembly : IDisposable
 {

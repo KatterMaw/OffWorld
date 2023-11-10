@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 using OffWorld.Definitions;
 
-namespace OffWorld;
+namespace OffWorld.Extensibility;
 
 public sealed class ModContent
 {

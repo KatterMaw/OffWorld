@@ -1,4 +1,4 @@
-﻿namespace OffWorld;
+﻿namespace OffWorld.Extensibility;
 
 public class Mod
 {
