@@ -12,8 +12,7 @@ internal static class DefinitionsLoader
 {
 	public static ImmutableList<Definition> LoadFilesRecursively(string directoryPath)
 	{
-		return Directory.EnumerateFiles(directoryPath)
-			.Where(filePath => filePath.EndsWith(".json"))
+		return Directory.EnumerateFiles(directoryPath, "*.json", SearchOption.AllDirectories)
 			.SelectMany(DeserializeDefinitionsFromFile)
 			.ToImmutableList();
 	}
