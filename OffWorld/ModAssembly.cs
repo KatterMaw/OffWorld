@@ -13,19 +13,14 @@ public sealed class ModAssembly : IDisposable
 	internal static ModAssembly Load(ModInformation modInformation)
 	{
 		var loadContext = new AssemblyLoadContext(modInformation.Name, true);
-		LoadDlls(modInformation.Directory, loadContext);
+		foreach (var dll in EnumerateDlls(modInformation))
+			loadContext.LoadFromAssemblyPath(dll);
 		var definitionTypes = GetDefinitionTypes(loadContext);
 		return new ModAssembly(loadContext, definitionTypes);
 	}
 
-	private static void LoadDlls(string directory, AssemblyLoadContext assemblyLoadContext)
-	{
-		foreach (var dll in GetDlls(directory))
-			assemblyLoadContext.LoadFromAssemblyPath(dll);
-	}
-
-	private static IEnumerable<string> GetDlls(string directory) =>
-		Directory.GetFiles(directory, "*.dll", SearchOption.AllDirectories);
+	internal static IEnumerable<string> EnumerateDlls(ModInformation modInformation) =>
+		Directory.EnumerateFiles(modInformation.Directory, "*.dll", SearchOption.AllDirectories);
 
 	private static ImmutableList<Type> GetDefinitionTypes(AssemblyLoadContext assemblyLoadContext) =>
 		assemblyLoadContext.Assemblies

@@ -18,8 +18,7 @@ public static class ModLoader
 	
 	public static Mod Load(ModInformation modInformation)
 	{
-		// utilize ModAssembly static members for that?
-		var hasAnyAssemblies = Directory.EnumerateFiles(modInformation.Directory, "*.dll", SearchOption.AllDirectories).Any();
+		var hasAnyAssemblies = ModAssembly.EnumerateDlls(modInformation).Any();
 		if (!hasAnyAssemblies)
 			return new Mod(modInformation, ModContent.Load(modInformation));
 		return new AssemblyMod(modInformation, ModContent.Load(modInformation), ModAssembly.Load(modInformation));
