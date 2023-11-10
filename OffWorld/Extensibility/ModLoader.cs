@@ -5,7 +5,7 @@ using CommunityToolkit.Diagnostics;
 
 namespace OffWorld.Extensibility;
 
-public static class ModLoader
+internal static class ModLoader
 {
 	public static ModInformation LoadInformation(string directory)
 	{
